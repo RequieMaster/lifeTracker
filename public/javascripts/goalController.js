@@ -9,6 +9,7 @@ angular.module('goalController', [])
       description: $scope.goalName
     };
     Goals.create(goalObject).success(function(data) {
+      goalObject._id = data._id;
       $scope.goals.push(goalObject);
       $scope.goalName = '';
     });
