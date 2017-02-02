@@ -44,7 +44,8 @@
       <div ng-repeat="goal in goals" class="form-group row form-row">
         <div class="col-xs-1">
         </div>
-        <div class="col-xs-10 goal">{{goal.description}}</div>
+        <div class="col-xs-9 goal">{{goal.description}}</div>
+        <div class="col-xs-1"><div class="pull-right"> {{goal.percentage}}%</div></div>
         <div class="col-xs-1">
           <div class="pull-right">
             <label class="btn btn-danger">

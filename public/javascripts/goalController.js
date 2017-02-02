@@ -1,7 +1,13 @@
 angular.module('goalController', [])
 .controller('goalCtrl', function($scope, $http, Goals) {
   Goals.get().success(function(data) {
-    $scope.goals = data;
+    for (var currentIndex=0; currentIndex<data.length; currentIndex=currentIndex+1) {
+      currentelement = data[currentIndex];
+      currentelement.ok= currentIndex;
+      currentelement.ko= 1;
+      currentelement.percentage = (currentelement.ok/(currentelement.ok+currentelement.ko))*100;
+    }
+      $scope.goals = data;
   });
   $scope.addGoal = function() {
     if(!$scope.goalName || $scope.goalName === '') { return; }
