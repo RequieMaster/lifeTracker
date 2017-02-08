@@ -1,4 +1,4 @@
-<html>
+html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,7 +33,6 @@
       </div><!--/.nav-collapse -->
     </div>
   </nav>
-{{test}}
   <div class="container">
     <div class="form-horizontal tracker-form">
       <div class="row tracker-heading">
@@ -44,8 +43,7 @@
       <div ng-repeat="goal in goals" class="form-group row form-row">
         <div class="col-xs-1">
         </div>
-        <div class="col-xs-9 goal">{{goal.description}}</div>
-        <div class="col-xs-1"><div class="pull-right"> {{goal.percentage}}%</div></div>
+        <div class="col-xs-10 goal">{{goal.description}}:{{goal.percentage}}%</div>
         <div class="col-xs-1">
           <div class="pull-right">
             <label class="btn btn-danger">
@@ -69,6 +67,7 @@
         </div>
       </form>
     </div>
+
     <hr>
     <footer>
       <p>&copy; 2017 SEK Catalunya</p>
