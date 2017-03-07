@@ -1,11 +1,26 @@
 angular.module('goalController', [])
 .controller('goalCtrl', function($scope, $http, Goals) {
   Goals.get().success(function(data) {
-    for (var currentIndex=0; currentIndex<data.length; currentIndex=currentIndex+1) {
-      var currentElement = data[currentIndex];
-      currentElement.percentage = (currentElement.ok/(currentElement.ok+currentElement.ko))*100;
-    }
-    $scope.goals = data;
+    Goals.getDay().success(function(day) {
+      if (!day) {
+        var today = new Date();
+        day = {day: today};
+      }
+      for (var currentIndex=0; currentIndex<data.length; currentIndex=currentIndex+1) {
+        var currentElement = data[currentIndex];
+        currentElement.percentage = (currentElement.ok/(currentElement.ok+currentElement.ko))*100;
+        if (day.goals) {
+          for (var j=0; j<day.goals.length; j++) {
+            if (day.goals[j]._id == currentElement._id) {
+              currentElement.result = day.goals[j].result;
+              break;
+            }
+          }
+        }
+      }
+      $scope.goals = data;
+      $scope.day = day.day;
+    });
   });
   $scope.addGoal = function() {
     if(!$scope.goalName || $scope.goalName === '') { return; }
@@ -26,11 +41,11 @@ angular.module('goalController', [])
     });
   };
   $scope.addOk = function(goal) {
-    Goals.addOk(goal._id).success(function(data) {
+    Goals.addOk(goal._id, $scope.day).success(function(data) {
     });
   };
   $scope.addKo = function(goal) {
-    Goals.addKo(goal._id).success(function(data) {
+    Goals.addKo(goal._id, $scope.day).success(function(data) {
     });
   };
 });
