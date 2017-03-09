@@ -5,6 +5,8 @@ angular.module('goalController', [])
       if (!day) {
         var today = new Date();
         day = {day: today};
+      } else {
+        day.day = new Date(day.day);
       }
       for (var currentIndex=0; currentIndex<data.length; currentIndex=currentIndex+1) {
         var currentElement = data[currentIndex];
