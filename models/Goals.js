@@ -4,7 +4,7 @@ var GoalSchema = new mongoose.Schema({
   description: String,
   ok: { type: Number, default: 0 },
   ko: { type: Number, default: 0 }
-}, { collection: 'jesus-goals' });
+}, { collection: 'sandra-goals' });
 
 GoalSchema.methods.addOk = function(callback) {
   if (!this.ok) {
