@@ -41,8 +41,8 @@
         </div>
         <div class='pull right'>
         <div class="form-row show-inputbtns">
-          <input type="date">
         </div>
+        <input type="date" id="{{loadDay}}">
       </form>
       <hr />
       <form action="#" class="ws-validate">
@@ -53,10 +53,10 @@
         <div class="col-xs-8 goal">{{goal.description}} - Successful days: {{goal.percentage}}%</div>
         <div class="col-xs-2">
           <div class="pull-right">
-            <label class="btn btn-success">
+            <label class="btn btn-success" ng-class="{'sel'= $scope.result==1}">
               <span class="glyphicon glyphicon-ok" aria-hidden="true" ng-click="addOk(goal)"></span>
             </label>
-            <label class="btn btn-danger">
+            <label class="btn btn-danger" ng-class="{'sel'= $scope.result==1"}>
               <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="addKo(goal)"></span>
             </label>
           </div>
